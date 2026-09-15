@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KYOTO｜金閣寺・嵐山 Journey Timeline</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+  :root{
+    --paper:#F6F2EA;
+    --paper-soft:#EFE9DD;
+    --ink:#3A332B;
+    --ink-soft:#6B6155;
+    --line:#D9D0BE;
+    --spot:#8C6B4F;
+    --transit:#6E8B84;
+    --food:#A9825C;
+    --coffee:#7C6A56;
+    --note:#9C5B4A;
+    --img-bg:#E5DFD1;
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:var(--paper); overflow-x:hidden; }
+  body{
+    font-family:'Noto Serif TC','EB Garamond',serif;
+    color:var(--ink);
+    font-size:14.5px;
+    line-height:1.7;
+    letter-spacing:0.01em;
+    -webkit-text-size-adjust:100%;
+  }
+
+  .page{ max-width:520px; margin:0 auto; padding:0 18px 70px; }
+  @media (min-width:640px){ .page{ max-width:600px; padding:0 30px 90px; } body{ font-size:15px; } }
+  @media (min-width:1024px){ .page{ max-width:640px; } }
+
+  /* ---------- Cover ---------- */
+  .cover{ padding:52px 0 30px; border-bottom:1px solid var(--line); margin-bottom:30px; }
+  .cover .city{ font-size:34px; font-weight:700; letter-spacing:0.1em; margin:0 0 10px; }
+  .cover .date{ font-family:'EB Garamond',serif; font-size:14px; color:var(--ink-soft); letter-spacing:0.06em; margin:0 0 10px; }
+  .cover .theme{ font-size:15.5px; font-weight:600; letter-spacing:0.03em; }
+
+  /* ---------- A/B ---------- */
+  .ab-row{ display:flex; gap:10px; margin-bottom:34px; }
+  .ab-card{ flex:1; border:1px solid var(--line); padding:14px 14px; }
+  .ab-card .ab-label{ font-size:12.5px; font-weight:700; letter-spacing:0.04em; margin-bottom:6px; }
+  .ab-card.a{ border-left:3px solid var(--spot); }
+  .ab-card.b{ border-left:3px solid var(--ink-soft); }
+  .ab-card p{ margin:0; font-size:12.5px; color:var(--ink-soft); line-height:1.6; }
+
+  /* ---------- Timeline ---------- */
+  .journey{ position:relative; }
+  .node{ position:relative; padding-left:30px; margin-bottom:0; }
+  .node::before{
+    content:"";
+    position:absolute; left:5px; top:4px;
+    width:8px; height:8px; border-radius:50%;
+    background:var(--paper); border:1.5px solid var(--spot);
+    z-index:2;
+  }
+  .node.food::before{ border-color:var(--food); }
+  .node.coffee::before{ border-color:var(--coffee); }
+  .node.endpoint::before{ background:var(--ink); border-color:var(--ink); }
+
+  .node-time{ font-family:'EB Garamond',serif; font-size:14px; letter-spacing:0.03em; color:var(--ink-soft); margin-bottom:2px; }
+  .node-title-en{ font-family:'EB Garamond',serif; font-size:12px; letter-spacing:0.14em; color:var(--spot); margin-bottom:1px; }
+  .node-title-zh{ font-size:19px; font-weight:700; margin-bottom:8px; }
+
+  .node-photo{
+    width:100%;
+    aspect-ratio:4/3;
+    background:var(--img-bg);
+    border:1px solid var(--line);
+    overflow:hidden;
+    margin-bottom:10px;
+    position:relative;
+  }
+  .node-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .node-photo .fallback{
+    display:none;
+    position:absolute; inset:0;
+    align-items:center; justify-content:center;
+    font-family:'EB Garamond',serif;
+    font-size:11px; letter-spacing:0.12em;
+    color:var(--ink-soft);
+    text-align:center;
+    padding:10px;
+  }
+  .node-photo img.err{ display:none; }
+  .node-photo img.err + .fallback{ display:flex; }
+
+  .tag-row{ display:flex; flex-wrap:wrap; gap:6px 14px; font-size:12.5px; margin-bottom:8px; }
+  .tag-row span{ color:var(--ink-soft); }
+  .tag-row b{ color:var(--ink); font-weight:600; }
+
+  .node-note{ font-size:12px; color:var(--note); margin-bottom:8px; }
+
+  .node-blurb{ font-size:13px; color:var(--ink); margin-bottom:8px; }
+
+  .node-links{ display:flex; gap:16px; margin-bottom:6px; }
+  .node-links a{ font-size:12px; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--ink); padding-bottom:1px; }
+
+  /* ---------- Connector ---------- */
+  .connector{
+    position:relative;
+    padding-left:30px;
+    margin:14px 0;
+  }
+  .connector::before{
+    content:"";
+    position:absolute; left:8.5px; top:0; bottom:0;
+    width:1px; background:var(--line);
+  }
+  .connector-box{
+    display:inline-block;
+    font-family:'EB Garamond',serif;
+    font-size:12.5px;
+    color:var(--transit);
+    line-height:1.6;
+    padding:6px 0;
+  }
+  .connector-box .mode{ font-weight:600; letter-spacing:0.03em; }
+  .connector-box .meta{ color:var(--ink-soft); font-size:11.5px; }
+  .connector-box .flag{ color:var(--note); font-size:11px; }
+
+  .node-spacer{ height:20px; }
+
+  footer{
+    margin-top:50px; padding-top:16px; border-top:1px solid var(--line);
+    font-size:11px; color:var(--ink-soft); text-align:center; letter-spacing:0.05em;
+  }
+
+  .colorkey{
+    margin-top:40px; padding-top:16px; border-top:1px solid var(--line);
+    font-size:11.5px; color:var(--ink-soft); line-height:1.8;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="cover">
+    <div class="city">KYOTO</div>
+    <div class="date">2026.09.15</div>
+    <div class="theme">KINKAKU-JI × ARASHIYAMA</div>
+  </div>
+
+  <div class="ab-row">
+    <div class="ab-card a">
+      <div class="ab-label">A — RECOMMENDED</div>
+      <p>金閣寺→午餐→天龍寺→竹林→野宮神社→嵐山街區→渡月橋→咖啡，全程單向不折返。</p>
+    </div>
+    <div class="ab-card b">
+      <div class="ab-label">B — EXTENDED</div>
+      <p>時間體力允許時，渡月橋前延伸至常寂光寺參道口，不繞遠路，不影響後續行程。</p>
+    </div>
+  </div>
+
+  <div class="journey">
+
+    <!-- START -->
+    <div class="node endpoint">
+      <div class="node-time">10:28</div>
+      <div class="node-title-en">START</div>
+      <div class="node-title-zh">島原／西本願寺周邊</div>
+    </div>
+
+    <div class="connector">
+      <div class="connector-box">
+        <div class="mode">WALK</div>
+        <div class="meta">7 MIN</div>
+      </div>
+    </div>
+    <div class="connector">
+      <div class="connector-box">
+        <div class="mode">BUS</div>
+        <div class="meta">約 40 MIN・¥230・IC OK</div>
+        <div class="flag">△ 班次待現場查詢</div>
+      </div>
+    </div>
+
+    <!-- KINKAKU-JI -->
+    <div class="node spot">
+      <div class="node-time">11:20 – 12:30</div>
+      <div class="node-title-en">KINKAKU-JI</div>
+      <div class="node-title-zh">金閣寺</div>
+      <div class="node-photo">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kinkaku-ji%2001.jpg?width=800"
+             alt="金閣寺 舍利殿與鏡湖池"
+             loading="lazy"
+             onerror="this.classList.add('err')">
+        <div class="fallback">PHOTO UNAVAILABLE</div>
+      </div>
+      <div class="tag-row">
+        <span>VISIT <b>70 MIN</b></span>
+        <span>OPEN <b>9:00–17:00</b></span>
+        <span>TICKET <b>¥500</b></span>
+      </div>
+      <div class="node-blurb">1397 年足利義滿建為北山山莊，義滿死後改為禪寺，現存建物為 1955 年火災後重建，世界文化遺產「古都京都的文化財」之一。</div>
+      <div class="tag-row"><span>PHOTO · BEST VIEW <b>鏡湖池對岸</b></span></div>
+      <div class="tag-row"><span>LIGHT <b>上午順光</b></span></div>
+      <div class="node-links">
+        <a href="https://www.google.com/maps/search/?api=1&query=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8C%97%E5%8C%BA%E9%87%91%E9%96%A3%E5%AF%BA%E7%94%BA1" target="_blank" rel="noopener">MAP ↗</a>
+        <a href="https://www.shokoku-ji.jp/kinkakuji/" target="_blank" rel="noopener">OFFICIAL ↗</a>
+      </div>
+      <div class="node-note">△ 待確認：今日是否有臨時公告或特別拝觀</div>
+    </div>
+
+    <div class="connector">
+      <div class="connector-box">
+        <div class="mode">WALK</div>
+        <div class="meta">6 MIN</div>
+      </div>
+    </div>
+
+    <!-- LUNCH -->
+    <div class="node food">
+      <div class="node-time">12:36 – 13:36</div>
+      <div class="node-title-en">LUNCH</div>
+      <div class="node-title-zh">權太呂 金閣寺店</div>
+      <div class="tag-row">
+        <span>OPEN <b>11:00–21:00</b></span>
+        <span>BUDGET <b>¥1,600–2,200</b></span>
+      </div>
+      <div class="node-blurb">距金閣寺步行 6 分，不需繞路，不需訂位。</div>
+      <div class="node-links">
+        <a href="https://www.google.com/maps/search/?api=1&query=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8C%97%E5%8C%BA%E5%B9%B3%E9%87%8E%E5%AE%AE%E6%95%B7%E7%94%BA26" target="_blank" rel="noopener">MAP ↗</a>
+      </div>
+      <div class="node-note">△ 待確認：今日（週二）確切營業狀況</div>
+    </div>
+
+    <div class="connector">
+      <div class="connector-box">
+        <div class="mode">WALK</div>
+        <div class="meta">6 MIN</div>
+      </div>
+    </div>
+    <div class="connector">
+      <div class="connector-box">
+        <div class="mode">BUS ＋ RANDEN</div>
+        <div class="meta">約 48 MIN・2 次轉乘・約 ¥350–400・IC OK</div>
+        <div class="flag">△ 班次待現場查詢</div>
+      </div>
+    </div>
+
+    <!-- TENRYU-JI -->
+    <div class="node spot">
+      <div class="node-time">14:40 – 15:25</div>
+      <div class="node-title-en">TENRYU-JI</div>
+      <div class="node-title-zh">天龍寺</div>
+      <div class="node-photo">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tenryuji-sogenchi.jpg?width=800"
+             alt="天龍寺 曹源池庭園"
+             loading="lazy"
+             onerror="this.classList.add('err')">
+        <div class="fallback">PHOTO UNAVAILABLE</div>
+      </div>
+      <div class="tag-row">
+        <span>VISIT <b>45 MIN</b></span>
+        <span>OPEN <b>8:30–17:30</b></span>
+        <span>LAST ENTRY <b>17:00</b></span>
+      </div>
+      <div class="tag-row">
+        <span>TICKET <b>庭園 ¥500</b></span>
+        <span>諸堂 <b>+¥300</b></span>
+      </div>
+      <div class="node-blurb">1339 年足利尊氏為弔慰後醍醐天皇所建，京都五山之首。曹源池庭園出自夢窗疏石之手，1994 年登錄世界文化遺產。</div>
+      <div class="tag-row"><span>PHOTO · BEST VIEW <b>大方丈簷廊</b></span></div>
+      <div class="tag-row"><span>LIGHT <b>陰天散射光</b></span></div>
+      <div class="node-links">
+        <a href="https://www.google.com/maps/search/?api=1&query=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E5%A4%A9%E9%BE%8D%E5%AF%BA%E8%8A%92%E3%83%8E%E9%A6%AC%E5%A0%B4%E7%94%BA68" target="_blank" rel="noopener">MAP ↗</a>
+        <a href="https://www.tenryuji.com/" target="_blank" rel="noopener">OFFICIAL ↗</a>
+      </div>
+      <div class="node-note">雲龍圖今日不開放（僅週六日祝，秋季特別公開 9/19 起）</div>
+    </div>
+
+    <div class="connector">
+      <div class="connector-box">
+        <div class="mode">WALK</div>
+        <div class="meta">10 MIN</div>
+      </div>
+    </div>
+
+    <!-- BAMBOO GROVE -->
+    <div class="node spot">
+      <div class="node-time">15:35 – 16:00</div>
+      <div class="node-title-en">BAMBOO GROVE</div>
+      <div class="node-title-zh">竹林の小径</div>
+      <div class="node-photo">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bamboo%20Forest%2C%20Arashiyama%2C%20Kyoto%2C%20Japan.jpg?width=800"
+             alt="嵐山 竹林の小径"
+             loading="lazy"
+             onerror="this.classList.add('err')">
+        <div class="fallback">PHOTO UNAVAILABLE</div>
+      </div>
+      <div class="tag-row">
+        <span>VISIT <b>25 MIN</b></span>
+        <span>OPEN <b>24H</b></span>
+        <span>TICKET <b>FREE</b></span>
+      </div>
+      <div class="node-blurb">嵯峨野一帶自平安時代即有竹林景觀傳統，象徵日本美學中的「幽玄」意境。</div>
+      <div class="tag-row"><span>PHOTO · STYLE <b>逆光剪影</b></span></div>
+      <div class="node-links">
+        <a href="https://www.google.com/maps/search/?api=1&query=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E5%B0%8F%E5%80%89%E5%B1%B1%E7%94%B0%E6%B7%B5%E5%B1%B1%E7%94%BA" target="_blank" rel="noopener">MAP ↗</a>
+      </div>
+    </div>
+
+    <div class="connector">
+      <div class="connector-box">
+        <div class="mode">WALK</div>
+      </div>
+    </div>
+
+    <!-- NONOMIYA -->
+    <div class="node spot">
+      <div class="node-time">16:00 – 16:20</div>
+      <div class="node-title-en">NONOMIYA SHRINE</div>
+      <div class="node-title-zh">野宮神社周邊</div>
+      <div class="tag-row"><span>VISIT <b>20 MIN</b></span></div>
+    </div>
+
+    <div class="connector">
+      <div class="connector-box">
+        <div class="mode">WALK</div>
+      </div>
+    </div>
+
+    <!-- ARASHIYAMA STREET -->
+    <div class="node spot">
+      <div class="node-time">16:20 – 16:45</div>
+      <div class="node-title-en">ARASHIYAMA STREET</div>
+      <div class="node-title-zh">嵐山街區散步</div>
+      <div class="tag-row"><span>VISIT <b>25 MIN</b></span></div>
+    </div>
+
+    <div class="connector">
+      <div class="connector-box">
+        <div class="mode">WALK</div>
+      </div>
+    </div>
+
+    <!-- TOGETSUKYO -->
+    <div class="node spot">
+      <div class="node-time">16:45 – 17:10</div>
+      <div class="node-title-en">TOGETSUKYO BRIDGE</div>
+      <div class="node-title-zh">渡月橋・桂川</div>
+      <div class="node-photo">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Togetsukyo%20Bridge%2C%20Arashiyama%2C%20Kyoto.jpg?width=800"
+             alt="嵐山 渡月橋"
+             loading="lazy"
+             onerror="this.classList.add('err')">
+        <div class="fallback">PHOTO UNAVAILABLE</div>
+      </div>
+      <div class="tag-row">
+        <span>VISIT <b>25 MIN</b></span>
+        <span>TICKET <b>FREE</b></span>
+      </div>
+      <div class="node-blurb">名稱源自鎌倉時代龜山上皇見月橫渡之姿，橫跨桂川，是嵐山最具代表性的畫面之一。</div>
+      <div class="tag-row"><span>PHOTO · LIGHT <b>傍晚金色調</b></span></div>
+    </div>
+
+    <div class="connector">
+      <div class="connector-box">
+        <div class="mode">WALK</div>
+        <div class="meta">10 MIN</div>
+      </div>
+    </div>
+
+    <!-- COFFEE -->
+    <div class="node coffee">
+      <div class="node-time">17:20 – 18:20</div>
+      <div class="node-title-en">COFFEE BREAK</div>
+      <div class="node-title-zh">パンとエスプレッソと嵐山庭園</div>
+      <div class="tag-row">
+        <span>60 MIN</span>
+        <span>OPEN <b>8:00–18:00</b></span>
+        <span>BUDGET <b>¥1,000–2,300</b></span>
+      </div>
+      <div class="node-blurb">嵐山駅步行 3 分，庭園座位可久坐，安靜有空氣感的老屋氛圍。</div>
+      <div class="node-links">
+        <a href="https://www.google.com/maps/search/?api=1&query=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E5%A4%A9%E9%BE%8D%E5%AF%BA%E8%8A%92%E3%83%8E%E9%A6%AC%E5%A0%B4%E7%94%BA45-15" target="_blank" rel="noopener">MAP ↗</a>
+      </div>
+    </div>
+
+    <div class="connector">
+      <div class="connector-box">
+        <div class="mode">RANDEN ＋ BUS</div>
+        <div class="meta">約 50 MIN・需轉乘・IC OK</div>
+        <div class="flag">△ 班次待現場查詢</div>
+      </div>
+    </div>
+
+    <!-- END -->
+    <div class="node endpoint">
+      <div class="node-time">19:10</div>
+      <div class="node-title-en">END</div>
+      <div class="node-title-zh">島原／西本願寺周邊</div>
+    </div>
+
+  </div>
+
+  <div class="colorkey">
+    交通說明：今日路線僅使用市巴士與嵐電（Randen）。市巴士無統一可靠的官方路線識別色，嵐電目前亦查無可靠的官方數值色碼，故交通節點統一以中性色＋文字標示，不自行創造或猜測顏色。全程建議以 ICOCA／Suica 逐次刷卡。
+  </div>
+
+  <footer>KYOTO · 2026.09.15 · KINKAKU-JI × ARASHIYAMA</footer>
+
+</div>
+</body>
+</html>
