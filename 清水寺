@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京都東山與伏見一日遊行程指南 - 2026/09/16</title>
+    <style>
+        :root {
+            --bg-color: #f7f6f2;
+            --card-bg: #ffffff;
+            --text-primary: #2c302e;
+            --text-secondary: #5a605c;
+            --accent-color: #4a6b5d; /* 自然藍綠色調 */
+            --accent-light: #e8efec;
+            --border-color: #e0e2dc;
+            --vermilion: #c84b31; /* 伏見朱紅 */
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin-bottom: 25px;
+            border-top: 5px solid var(--accent-color);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .meta-info {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            background-color: var(--accent-light);
+            padding: 4px 12px;
+            border-radius: 20px;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            margin: 30px 0 15px 0;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+        }
+
+        .spot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .spot-title {
+            font-size: 1.25rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            background-color: var(--vermilion);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .photo-guide {
+            background-color: var(--accent-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 12px 15px;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .photo-guide h4 {
+            margin: 0 0 5px 0;
+            color: var(--accent-color);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--accent-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 15px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+        }
+
+        .time {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 0.95rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--accent-light);
+            color: var(--accent-color);
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>京都慢行：伏見稻荷與東山清水寺一日遊</h1>
+        <div class="meta-info">
+            <span class="meta-item">日期：2026/09/16 (三)</span>
+            <span class="meta-item">出發：09:30 西本願寺</span>
+            <span class="meta-item">人數：3人</span>
+            <span class="meta-item">票券：地下鐵・巴士一日券</span>
+        </div>
+    </header>
+
+    <div class="section-title">核心景點與攝影指南</div>
+
+    <!-- 伏見稻荷大社 -->
+    <div class="card">
+        <div class="spot-header">
+            <h2 class="spot-title">伏見稻荷大社</h2>
+            <span class="tag">推薦度 ★★★★★</span>
+        </div>
+        <div class="info-grid">
+            <div><strong>建議停留：</strong> 90 - 120 分鐘</div>
+            <div><strong>營業時間：</strong> 24小時開放</div>
+            <div><strong>門票：</strong> 免費</div>
+            <div><strong>地址：</strong> 京都市伏見区深草藪ノ内町68</div>
+        </div>
+        <p><strong>歷史文化簡介：</strong> 711年創設，為全日本稻荷神社總本宮。主祀商業與農業之神，千本鳥居係由信徒祈願奉納而成，展現極高之神道教信仰與歷史價值。</p>
+        <div class="photo-guide">
+            <h4>📷 攝影指南（自然空氣感風格）</h4>
+            <ul>
+                <li><strong>最佳畫面：</strong> 千本鳥居幾何光影與曲線延伸。</li>
+                <li><strong>建議構圖：</strong> 低角度仰拍，將人物置於三分之一焦點，利用兩側鳥居做框架。</li>
+                <li><strong>光線條件：</strong> 10:00 - 11:00 前後斜射光，展現陰翳之美。</li>
+                <li><strong>避開人潮：</strong> 順路步行至「熊鷹社」方向，遊客數量減少 70%。</li>
+            </ul>
+        </div>
+        <p style="font-size: 0.85rem; margin-top: 10px;">
+            <a href="https://maps.google.com/?cid=13271731174620572186" target="_blank">Google 地圖</a> | 
+            <a href="https://www.inaritasha.or.jp/" target="_blank">官方網站</a>
+        </p>
+    </div>
+
+    <!-- 清水寺 -->
+    <div class="card">
+        <div class="spot-header">
+            <h2 class="spot-title">清水寺</h2>
+            <span class="tag">推薦度 ★★★★★</span>
+        </div>
+        <div class="info-grid">
+            <div><strong>建議停留：</strong> 90 - 120 分鐘</div>
+            <div><strong>營業時間：</strong> 06:00 - 18:00 (17:30最後入場)</div>
+            <div><strong>門票：</strong> 500 日圓</div>
+            <div><strong>地址：</strong> 京都市東山区清水1丁目294</div>
+        </div>
+        <p><strong>歷史文化簡介：</strong> 778年開山，世界文化遺產。國寶「清水舞台」以139根木柱榫接懸空建於崖上，未用一釘，為日本木造建築之巔峰作品。</p>
+        <div class="photo-guide">
+            <h4>📷 攝影指南（歷史空間感風格）</h4>
+            <ul>
+                <li><strong>最佳畫面：</strong> 從奧之院側拍懸空舞台與京都市景。</li>
+                <li><strong>建議構圖：</strong> 右側放置舞台木造結構，左側延伸市景與森林，低飽和藍綠調。</li>
+                <li><strong>光線條件：</strong> 15:30 - 16:30 順光溫暖斜陽。</li>
+            </ul>
+        </div>
+        <p style="font-size: 0.85rem; margin-top: 10px;">
+            <a href="https://maps.google.com/?cid=16120516781292150392" target="_blank">Google 地圖</a> | 
+            <a href="https://www.kiyomizudera.or.jp/" target="_blank">官方網站</a>
+        </p>
+    </div>
+
+    <div class="section-title">下午咖啡休息候補評估</div>
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <th>店家名稱</th>
+                    <th>週三營業</th>
+                    <th>環境與座位</th>
+                    <th>評估結果</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>市川屋珈琲</strong></td>
+                    <td>09:00-17:00</td>
+                    <td>200年町家改建，座位寬敞舒暢</td>
+                    <td><span style="color: green; font-weight: bold;">【最推薦】</span> 適合45-60分深度休息</td>
+                </tr>
+                <tr>
+                    <td><strong>Walden Woods Kyoto</strong></td>
+                    <td>09:00-18:00</td>
+                    <td>極簡全白空間，階梯式座位</td>
+                    <td><strong>【備選 1】</strong> 空間感強，採光佳</td>
+                </tr>
+                <tr>
+                    <td><strong>Blue Bottle 六波羅店</strong></td>
+                    <td>08:00-18:00</td>
+                    <td>町家結合現代風格，座位穩定</td>
+                    <td><strong>【備選 2】</strong> 品質穩定，順路性高</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section-title">A｜最推薦版本行程時間軸</div>
+    <div class="card">
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="time">09:30 - 10:00</div>
+                <div><strong>出發前往伏見稻荷：</strong> 西本願寺前搭乘市巴士或地下鐵至伏見稻荷區域。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">10:00 - 12:00</div>
+                <div><strong>伏見稻荷大社：</strong> 參觀本殿與千本鳥居漫步攝影（預留約 2 小時）。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">12:15 - 13:30</div>
+                <div><strong>午餐：</strong> 祢ざめ家 (Nezan-ya) 享用名物鰻魚飯或蕎麥麵。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">13:30 - 14:15</div>
+                <div><strong>搭車移動：</strong> 搭乘京阪電車/巴士移動至東山五條區域。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">14:15 - 15:15</div>
+                <div><strong>咖啡休息：</strong> 市川屋珈琲（享受 60 分鐘町家珈琲時光）。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">15:30 - 17:30</div>
+                <div><strong>清水寺巡禮：</strong> 松原通 ➔ 清水寺本堂舞台 ➔ 音羽之瀑（午後斜陽攝影）。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">17:30 - 18:00</div>
+                <div><strong>返程：</strong> 搭乘市巴士 206 系統返回西本願寺。</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
