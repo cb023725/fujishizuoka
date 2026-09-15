@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>京都｜金閣寺・嵐山 一日行程</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+  :root{
+    --paper:#F6F2EA;
+    --paper-soft:#EFE9DE;
+    --ink:#3A332B;
+    --ink-soft:#6B6155;
+    --line:#DAD2C2;
+    --spot:#8C6B4F;
+    --transit:#6E8B84;
+    --food:#A9825C;
+    --coffee:#7C6A56;
+    --photo:#7A8FA6;
+    --note:#9C5B4A;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html,body{
+    margin:0; padding:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Noto Serif TC','EB Garamond',serif;
+    -webkit-text-size-adjust:100%;
+    overflow-x:hidden;
+  }
+
+  body{
+    line-height:1.85;
+    font-size:15.5px;
+    letter-spacing:0.02em;
+  }
+
+  .page{
+    max-width:520px;
+    margin:0 auto;
+    padding:0 22px 80px;
+  }
+
+  @media (min-width:640px){
+    .page{ max-width:600px; padding:0 32px 100px; }
+    body{ font-size:16px; }
+  }
+
+  /* ---------- Cover ---------- */
+  .cover{
+    padding:64px 0 40px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:40px;
+  }
+  .cover .city{
+    font-size:40px;
+    font-weight:700;
+    letter-spacing:0.12em;
+    margin:0 0 14px;
+  }
+  .cover .date{
+    font-family:'EB Garamond',serif;
+    font-size:15px;
+    color:var(--ink-soft);
+    letter-spacing:0.08em;
+    margin:0 0 22px;
+  }
+  .cover .theme{
+    font-size:19px;
+    font-style:italic;
+    font-family:'EB Garamond',serif;
+    color:var(--ink);
+    margin:0 0 8px;
+    line-height:1.5;
+  }
+  .cover .subtitle{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    letter-spacing:0.06em;
+  }
+
+  /* ---------- Section label ---------- */
+  .section-label{
+    font-size:12px;
+    letter-spacing:0.18em;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--line);
+  }
+  .section{ margin-bottom:56px; }
+
+  /* ---------- Timeline ---------- */
+  .timeline{
+    position:relative;
+    padding-left:22px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:4px; top:6px; bottom:6px;
+    width:1px;
+    background:var(--line);
+  }
+  .t-item{
+    position:relative;
+    padding-bottom:26px;
+  }
+  .t-item:last-child{ padding-bottom:0; }
+  .t-item::before{
+    content:"";
+    position:absolute;
+    left:-22px; top:6px;
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--paper);
+    border:1.5px solid var(--spot);
+  }
+  .t-item.is-transit::before{ border-color:var(--transit); }
+  .t-item.is-food::before{ border-color:var(--food); }
+  .t-item.is-coffee::before{ border-color:var(--coffee); }
+
+  .t-time{
+    font-family:'EB Garamond',serif;
+    font-size:14.5px;
+    letter-spacing:0.04em;
+    color:var(--ink-soft);
+    margin-bottom:3px;
+  }
+  .t-title{
+    font-size:16.5px;
+    font-weight:600;
+    margin-bottom:3px;
+  }
+  .t-meta{
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .t-meta .dot{ margin:0 6px; color:var(--line); }
+  .t-note{
+    font-size:13px;
+    color:var(--note);
+    margin-top:4px;
+  }
+
+  /* ---------- Tag ---------- */
+  .tag{
+    display:inline-block;
+    font-size:11px;
+    letter-spacing:0.14em;
+    padding:3px 9px;
+    border:1px solid currentColor;
+    border-radius:2px;
+    margin-bottom:14px;
+  }
+  .tag.spot{ color:var(--spot); }
+  .tag.transit{ color:var(--transit); }
+  .tag.food{ color:var(--food); }
+  .tag.coffee{ color:var(--coffee); }
+  .tag.photo{ color:var(--photo); }
+  .tag.note{ color:var(--note); }
+
+  /* ---------- Card ---------- */
+  .card{
+    border:1px solid var(--line);
+    padding:26px 22px;
+    margin-bottom:22px;
+    background:var(--paper-soft);
+  }
+  .card-title-zh{
+    font-size:23px;
+    font-weight:700;
+    margin:0 0 2px;
+  }
+  .card-title-en{
+    font-family:'EB Garamond',serif;
+    font-style:italic;
+    font-size:14px;
+    color:var(--ink-soft);
+    margin:0 0 16px;
+  }
+  .card-row{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    padding:9px 0;
+    border-top:1px solid var(--line);
+    font-size:14px;
+  }
+  .card-row:first-of-type{ border-top:none; }
+  .card-row .label{
+    color:var(--ink-soft);
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+  .card-row .value{
+    text-align:right;
+  }
+
+  .card-block{ margin-top:18px; }
+  .card-block-title{
+    font-size:12px;
+    letter-spacing:0.12em;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .card-block p{ margin:0; font-size:14.5px; }
+
+  .highlight-list{
+    margin:0; padding-left:18px;
+    font-size:14.5px;
+  }
+  .highlight-list li{ margin-bottom:5px; }
+
+  .links-row{
+    display:flex;
+    gap:18px;
+    margin-top:18px;
+    flex-wrap:wrap;
+  }
+  .links-row a{
+    font-size:13.5px;
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px solid var(--ink);
+    padding-bottom:1px;
+  }
+
+  .caveat{
+    margin-top:16px;
+    font-size:13px;
+    color:var(--note);
+    border-top:1px dashed var(--line);
+    padding-top:12px;
+  }
+
+  /* ---------- Transit block ---------- */
+  .transit-block{
+    border:1px solid var(--line);
+    padding:22px 20px;
+    margin-bottom:18px;
+  }
+  .transit-title{
+    font-size:16px;
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .transit-flow{
+    font-family:'EB Garamond',serif;
+    font-size:15px;
+    color:var(--ink);
+    text-align:center;
+    line-height:2.3;
+    margin:0 0 16px;
+    color:var(--transit);
+  }
+  .transit-detail{
+    font-size:14px;
+  }
+  .transit-detail .row{
+    display:flex;
+    justify-content:space-between;
+    gap:14px;
+    padding:7px 0;
+    border-top:1px solid var(--line);
+  }
+  .transit-detail .row:first-child{ border-top:none; }
+  .transit-detail .label{ color:var(--ink-soft); white-space:nowrap; }
+  .transit-detail .value{ text-align:right; }
+
+  /* ---------- Food / Coffee card ---------- */
+  .food-card, .coffee-card{
+    border:1px solid var(--line);
+    padding:22px 20px;
+    margin-bottom:18px;
+  }
+  .coffee-card{ background:var(--paper-soft); }
+  .coffee-header{
+    font-size:12px;
+    letter-spacing:0.18em;
+    color:var(--coffee);
+    margin-bottom:12px;
+  }
+  .food-name, .coffee-name{
+    font-size:19px;
+    font-weight:600;
+    margin-bottom:12px;
+  }
+
+  /* ---------- Version block ---------- */
+  .version-block{
+    border-left:2px solid var(--spot);
+    padding-left:18px;
+    margin-bottom:28px;
+  }
+  .version-block.b{
+    border-left-color:var(--ink-soft);
+  }
+  .version-label{
+    font-size:15px;
+    font-weight:700;
+    margin-bottom:8px;
+    letter-spacing:0.06em;
+  }
+  .version-block p{
+    font-size:14.5px;
+    margin:0;
+    color:var(--ink);
+  }
+
+  /* ---------- Trip check ---------- */
+  .check-list{
+    list-style:none;
+    margin:0; padding:0;
+  }
+  .check-list li{
+    display:flex;
+    gap:10px;
+    padding:10px 0;
+    border-top:1px solid var(--line);
+    font-size:14.5px;
+  }
+  .check-list li:first-child{ border-top:none; }
+  .check-mark{
+    flex-shrink:0;
+    font-family:'EB Garamond',serif;
+    color:var(--transit);
+    width:16px;
+  }
+  .check-mark.pending{ color:var(--note); }
+
+  footer{
+    margin-top:60px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-size:12px;
+    color:var(--ink-soft);
+    text-align:center;
+    letter-spacing:0.06em;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ COVER ============ -->
+  <div class="cover">
+    <div class="city">KYOTO</div>
+    <div class="date">2026.09.15</div>
+    <div class="theme">Kinkaku-ji &amp; Arashiyama</div>
+    <div class="subtitle">Classic Kyoto · Garden · Bamboo · River</div>
+  </div>
+
+  <!-- ============ A／B 版本 ============ -->
+  <div class="section">
+    <div class="section-label">行程版本　ITINERARY VERSION</div>
+
+    <div class="version-block a">
+      <div class="version-label">A｜最推薦</div>
+      <p>金閣寺 → 午餐（權太呂金閣寺店）→ 交通 → 天龍寺庭園＋諸堂 → 竹林の小径 → 野宮神社 → 嵐山街區 → 渡月橋＋桂川 → 下午咖啡（パンとエスプレッソと嵐山庭園）→ 返程。全程單向移動，不折返。</p>
+    </div>
+
+    <div class="version-block b">
+      <div class="version-label">B｜擴充版本</div>
+      <p>若渡月橋後仍有餘裕，可將嵐山街區散步延伸至常寂光寺參道口，拍攝石階與綠意，再折返主街，不繞遠路、不影響咖啡與交通時段。若時間偏緊則直接省略，不影響主行程。</p>
+    </div>
+  </div>
+
+  <!-- ============ 行程總覽 ============ -->
+  <div class="section">
+    <div class="section-label">行程總覽　TIMELINE</div>
+    <div class="timeline">
+
+      <div class="t-item">
+        <div class="t-time">10:28</div>
+        <div class="t-title">出發</div>
+        <div class="t-meta">島原／西本願寺周邊</div>
+      </div>
+
+      <div class="t-item is-transit">
+        <div class="t-time">10:28 – 10:35</div>
+        <div class="t-title">步行至最近巴士站</div>
+        <div class="t-meta">步行 7 分</div>
+      </div>
+
+      <div class="t-item is-transit">
+        <div class="t-time">10:35 – 11:15</div>
+        <div class="t-title">巴士往金閣寺道</div>
+        <div class="t-meta">巴士約 40 分</div>
+        <div class="t-note">△ 確切發車班次待現場查詢</div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-time">11:15 – 11:20</div>
+        <div class="t-title">步行至金閣寺入口</div>
+        <div class="t-meta">步行 5 分</div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-time">11:20 – 12:30</div>
+        <div class="t-title">金閣寺參觀</div>
+        <div class="t-meta">停留 70 分<span class="dot">·</span>舍利殿・鏡湖池・逆さ金閣</div>
+      </div>
+
+      <div class="t-item is-food">
+        <div class="t-time">12:30 – 12:36</div>
+        <div class="t-title">步行至權太呂金閣寺店</div>
+        <div class="t-meta">步行 6 分</div>
+      </div>
+
+      <div class="t-item is-food">
+        <div class="t-time">12:36 – 13:36</div>
+        <div class="t-title">午餐</div>
+        <div class="t-meta">停留 60 分<span class="dot">·</span>權太呂金閣寺店</div>
+      </div>
+
+      <div class="t-item is-transit">
+        <div class="t-time">13:36 – 13:42</div>
+        <div class="t-title">步行回金閣寺道巴士站</div>
+        <div class="t-meta">步行 6 分</div>
+      </div>
+
+      <div class="t-item is-transit">
+        <div class="t-time">13:42 – 14:30</div>
+        <div class="t-title">巴士（往北野白梅町）→ 轉嵐電 → 嵐山駅</div>
+        <div class="t-meta">約 48 分<span class="dot">·</span>轉乘 2 次</div>
+        <div class="t-note">△ 確切發車班次待現場查詢</div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-time">14:30 – 14:40</div>
+        <div class="t-title">步行至天龍寺</div>
+        <div class="t-meta">步行 10 分</div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-time">14:40 – 15:25</div>
+        <div class="t-title">天龍寺庭園＋諸堂</div>
+        <div class="t-meta">停留 45 分<span class="dot">·</span>曹源池庭園・大方丈</div>
+        <div class="t-note">雲龍圖今日不開放</div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-time">15:25 – 15:35</div>
+        <div class="t-title">步行至竹林入口</div>
+        <div class="t-meta">步行 10 分，直接銜接不折返</div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-time">15:35 – 16:00</div>
+        <div class="t-title">竹林の小径</div>
+        <div class="t-meta">停留 25 分</div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-time">16:00 – 16:20</div>
+        <div class="t-title">野宮神社周邊</div>
+        <div class="t-meta">停留 20 分</div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-time">16:20 – 16:45</div>
+        <div class="t-title">嵐山街區散步</div>
+        <div class="t-meta">停留 25 分</div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-time">16:45 – 17:10</div>
+        <div class="t-title">渡月橋＋桂川河畔</div>
+        <div class="t-meta">停留 25 分</div>
+      </div>
+
+      <div class="t-item is-coffee">
+        <div class="t-time">17:10 – 17:20</div>
+        <div class="t-title">步行至咖啡店</div>
+        <div class="t-meta">步行 10 分</div>
+      </div>
+
+      <div class="t-item is-coffee">
+        <div class="t-time">17:20 – 18:20</div>
+        <div class="t-title">下午咖啡</div>
+        <div class="t-meta">停留 60 分<span class="dot">·</span>パンとエスプレッソと嵐山庭園</div>
+      </div>
+
+      <div class="t-item is-transit">
+        <div class="t-time">18:20 – 19:10</div>
+        <div class="t-title">交通返回島原／西本願寺周邊</div>
+        <div class="t-meta">約 50 分<span class="dot">·</span>轉乘</div>
+        <div class="t-note">△ 確切發車班次待現場查詢</div>
+      </div>
+
+      <div class="t-item">
+        <div class="t-time">19:10</div>
+        <div class="t-title">抵達</div>
+        <div class="t-meta">島原／西本願寺周邊</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ 主要景點：金閣寺 ============ -->
+  <div class="section">
+    <div class="section-label">主要景點　SPOTS</div>
+
+    <span class="tag spot">景點</span>
+    <div class="card">
+      <div class="card-title-zh">金閣寺</div>
+      <div class="card-title-en">Kinkaku-ji（鹿苑寺）</div>
+
+      <div class="card-row"><span class="label">推薦程度</span><span class="value">必去</span></div>
+      <div class="card-row"><span class="label">建議停留</span><span class="value">70 分鐘</span></div>
+      <div class="card-row"><span class="label">營業時間</span><span class="value">9:00 – 17:00，年中無休</span></div>
+      <div class="card-row"><span class="label">門票</span><span class="value">大人（高中以上）500円／國中小 300円</span></div>
+      <div class="card-row"><span class="label">地址</span><span class="value">京都府京都市北区金閣寺町1</span></div>
+
+      <div class="card-block">
+        <div class="card-block-title">歷史文化</div>
+        <p>1397 年由室町幕府三代將軍足利義滿建造為北山山莊，義滿死後改為禪寺，現存建物為 1955 年火災後重建。是北山文化代表，登錄世界文化遺產「古都京都的文化財」之一。</p>
+      </div>
+
+      <div class="card-block">
+        <div class="card-block-title">主要看點</div>
+        <ul class="highlight-list">
+          <li>舍利殿（金閣）</li>
+          <li>鏡湖池</li>
+          <li>庭園</li>
+        </ul>
+      </div>
+
+      <span class="tag photo" style="margin-top:18px;">攝影</span>
+      <div class="card-block" style="margin-top:0;">
+        <div class="card-block-title">PHOTO GUIDE</div>
+        <p>最佳拍攝位置為鏡湖池對岸，可拍下「逆さ金閣」倒影；上午順光為佳。人潮多時，可改往夕佳亭方向高處，拍攝人少、空間感更佳的「見返り金閣」。</p>
+      </div>
+
+      <div class="links-row">
+        <a href="https://www.google.com/maps/search/?api=1&query=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8C%97%E5%8C%BA%E9%87%91%E9%96%A3%E5%AF%BA%E7%94%BA1" target="_blank" rel="noopener">Google Maps ↗</a>
+        <a href="https://www.shokoku-ji.jp/kinkakuji/" target="_blank" rel="noopener">Official Website ↗</a>
+      </div>
+
+      <div class="caveat">△ 待確認：今日（2026.09.15）是否有臨時特別拝觀或公告異動，出發前建議再查一次官網首頁。</div>
+    </div>
+
+    <!-- ============ 天龍寺 ============ -->
+    <span class="tag spot">景點</span>
+    <div class="card">
+      <div class="card-title-zh">天龍寺</div>
+      <div class="card-title-en">Tenryu-ji</div>
+
+      <div class="card-row"><span class="label">推薦程度</span><span class="value">必去</span></div>
+      <div class="card-row"><span class="label">建議停留</span><span class="value">45 分鐘</span></div>
+      <div class="card-row"><span class="label">庭園時間</span><span class="value">8:30 – 17:30（最終受付 17:00）</span></div>
+      <div class="card-row"><span class="label">諸堂時間</span><span class="value">8:30 – 16:45（最終受付 16:30）</span></div>
+      <div class="card-row"><span class="label">庭園票價</span><span class="value">500円</span></div>
+      <div class="card-row"><span class="label">諸堂票價</span><span class="value">庭園票另加 300円</span></div>
+      <div class="card-row"><span class="label">雲龍圖</span><span class="value">今日不開放</span></div>
+      <div class="card-row"><span class="label">地址</span><span class="value">京都府京都市右京区嵯峨天龍寺芒ノ馬場町68</span></div>
+
+      <div class="card-block">
+        <div class="card-block-title">歷史文化</div>
+        <p>1339 年足利尊氏為弔慰後醍醐天皇冥福所建，為京都五山之首。庭園「曹源池」出自開山夢窗疏石之手，是日本最早被指定為史蹟・特別名勝的庭園，1994 年登錄世界文化遺產。</p>
+      </div>
+
+      <div class="card-block">
+        <div class="card-block-title">主要看點</div>
+        <ul class="highlight-list">
+          <li>曹源池庭園</li>
+          <li>大方丈・書院</li>
+        </ul>
+      </div>
+
+      <span class="tag photo" style="margin-top:18px;">攝影</span>
+      <div class="card-block" style="margin-top:0;">
+        <div class="card-block-title">PHOTO GUIDE</div>
+        <p>坐在大方丈簷廊下取景，把簷廊木結構當前景框住庭園與借景嵐山，最能呈現歷史感與空間感。陰天或樹蔭散射光最適合低飽和、空氣感的調性，避免正午直射造成高反差。</p>
+      </div>
+
+      <div class="links-row">
+        <a href="https://www.google.com/maps/search/?api=1&query=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E5%A4%A9%E9%BE%8D%E5%AF%BA%E8%8A%92%E3%83%8E%E9%A6%AC%E5%A0%B4%E7%94%BA68" target="_blank" rel="noopener">Google Maps ↗</a>
+        <a href="https://www.tenryuji.com/" target="_blank" rel="noopener">Official Website ↗</a>
+      </div>
+
+      <div class="caveat">△ 待確認：今日是否有法會等活動影響諸堂參拝，出發前建議留意入口公告。</div>
+    </div>
+
+    <!-- ============ 竹林の小径 ============ -->
+    <span class="tag spot">景點</span>
+    <div class="card">
+      <div class="card-title-zh">竹林の小径</div>
+      <div class="card-title-en">Arashiyama Bamboo Grove</div>
+
+      <div class="card-row"><span class="label">建議停留</span><span class="value">25 分鐘</span></div>
+      <div class="card-row"><span class="label">開放時間</span><span class="value">24 小時通行（夜間較暗）</span></div>
+      <div class="card-row"><span class="label">門票</span><span class="value">免費</span></div>
+      <div class="card-row"><span class="label">地址</span><span class="value">京都府京都市右京区嵯峨小倉山田淵山町</span></div>
+
+      <div class="card-block">
+        <div class="card-block-title">歷史文化</div>
+        <p>嵯峨野一帶自平安時代即有竹林景觀傳統，如今的小徑是京都最具代表性的自然文化景觀之一，象徵日本美學中的「幽玄」意境。</p>
+      </div>
+
+      <span class="tag photo" style="margin-top:18px;">攝影</span>
+      <div class="card-block" style="margin-top:0;">
+        <div class="card-block-title">PHOTO GUIDE</div>
+        <p>人物走入畫面中軸線，逆光剪影或側光皆可營造空氣感。人潮多時，可改拍局部竹節特寫，或轉往野宮神社方向的小徑取景。</p>
+      </div>
+
+      <div class="links-row">
+        <a href="https://www.google.com/maps/search/?api=1&query=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E5%B0%8F%E5%80%89%E5%B1%B1%E7%94%B0%E6%B7%B5%E5%B1%B1%E7%94%BA" target="_blank" rel="noopener">Google Maps ↗</a>
+      </div>
+    </div>
+
+    <!-- ============ 渡月橋＋桂川 ============ -->
+    <span class="tag spot">景點</span>
+    <div class="card">
+      <div class="card-title-zh">渡月橋・桂川</div>
+      <div class="card-title-en">Togetsukyo Bridge &amp; Katsura River</div>
+
+      <div class="card-row"><span class="label">建議停留</span><span class="value">25 分鐘</span></div>
+      <div class="card-row"><span class="label">門票</span><span class="value">免費</span></div>
+
+      <div class="card-block">
+        <div class="card-block-title">歷史文化</div>
+        <p>名稱源自鎌倉時代龜山上皇見月橫渡之姿而得名，是嵐山地標，橫跨桂川（大堰川），為嵐山最具代表性的畫面之一。</p>
+      </div>
+
+      <span class="tag photo" style="margin-top:18px;">攝影</span>
+      <div class="card-block" style="margin-top:0;">
+        <div class="card-block-title">PHOTO GUIDE</div>
+        <p>河畔低角度構圖最能拍出水面倒影與空氣層次，建議傍晚略帶金色調的光線，最貼近自然藍綠的調性。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 交通 ============ -->
+  <div class="section">
+    <div class="section-label">交通　TRANSIT</div>
+
+    <span class="tag transit">交通</span>
+    <div class="transit-block">
+      <div class="transit-title">島原／西本願寺 → 金閣寺</div>
+      <div class="transit-flow">出發<br>↓ 步行<br>巴士站<br>↓ 巴士<br>金閣寺道</div>
+      <div class="transit-detail">
+        <div class="row"><span class="label">步行時間</span><span class="value">7 分</span></div>
+        <div class="row"><span class="label">乘車時間</span><span class="value">約 40 分</span></div>
+        <div class="row"><span class="label">車資</span><span class="value">230円</span></div>
+        <div class="row"><span class="label">IC 卡</span><span class="value">ICOCA／Suica 可用</span></div>
+        <div class="row"><span class="label">班次</span><span class="value" style="color:var(--note);">待確認</span></div>
+      </div>
+    </div>
+
+    <span class="tag transit">交通</span>
+    <div class="transit-block">
+      <div class="transit-title">金閣寺 → 嵐山</div>
+      <div class="transit-flow">金閣寺道<br>↓ 巴士<br>北野白梅町<br>↓ 嵐電（轉乘帷子ノ辻）<br>嵐山駅</div>
+      <div class="transit-detail">
+        <div class="row"><span class="label">乘車時間</span><span class="value">約 48 分</span></div>
+        <div class="row"><span class="label">轉乘次數</span><span class="value">2 次</span></div>
+        <div class="row"><span class="label">車資</span><span class="value">約 350 – 400円</span></div>
+        <div class="row"><span class="label">IC 卡</span><span class="value">ICOCA／Suica 可用</span></div>
+        <div class="row"><span class="label">班次</span><span class="value" style="color:var(--note);">待確認</span></div>
+      </div>
+      <div class="caveat">選擇巴士＋嵐電組合，因嵐電多為專用軌道，較不受市區塞車影響，適合午後使用。</div>
+    </div>
+
+    <span class="tag transit">交通</span>
+    <div class="transit-block">
+      <div class="transit-title">嵐山 → 島原／西本願寺</div>
+      <div class="transit-flow">嵐山駅<br>↓ 嵐電＋巴士（反向路線）<br>島原／西本願寺周邊</div>
+      <div class="transit-detail">
+        <div class="row"><span class="label">乘車時間</span><span class="value">約 50 分</span></div>
+        <div class="row"><span class="label">轉乘</span><span class="value">需轉乘</span></div>
+        <div class="row"><span class="label">IC 卡</span><span class="value">ICOCA／Suica 可用</span></div>
+        <div class="row"><span class="label">班次</span><span class="value" style="color:var(--note);">待確認</span></div>
+      </div>
+    </div>
+
+    <div class="caveat" style="border:1px solid var(--line); padding:16px 18px;">
+      全程建議使用 ICOCA／Suica 逐次刷卡，不需購買一日券——今日路線混用市巴士與嵐電，目前京都的一日券皆無法同時涵蓋兩者。
+    </div>
+  </div>
+
+  <!-- ============ 餐食 ============ -->
+  <div class="section">
+    <div class="section-label">餐食　MEALS</div>
+
+    <span class="tag food">餐食</span>
+    <div class="food-card">
+      <div class="food-name">權太呂 金閣寺店</div>
+      <div class="card-row" style="border-top:none;"><span class="label">營業時間</span><span class="value">11:00 – 21:00，年中無休</span></div>
+      <div class="card-row"><span class="label">預算</span><span class="value">約 1,600 – 2,200円／人</span></div>
+      <div class="card-row"><span class="label">地址</span><span class="value">京都府京都市北区平野宮敷町26</span></div>
+      <div class="card-row"><span class="label">是否需訂位</span><span class="value">不需訂位</span></div>
+
+      <div class="card-block">
+        <div class="card-block-title">推薦理由</div>
+        <p>距金閣寺步行約 6 分，不需繞路；觀光時段可能需排隊 10 – 20 分。</p>
+      </div>
+
+      <div class="links-row">
+        <a href="https://www.google.com/maps/search/?api=1&query=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8C%97%E5%8C%BA%E5%B9%B3%E9%87%8E%E5%AE%AE%E6%95%B7%E7%94%BA26" target="_blank" rel="noopener">Google Maps ↗</a>
+      </div>
+
+      <div class="caveat">△ 待確認：今日（週二）確切營業狀況，建議出發前再次確認。</div>
+    </div>
+  </div>
+
+  <!-- ============ 咖啡休息 ============ -->
+  <div class="section">
+    <div class="section-label">咖啡休息　COFFEE BREAK</div>
+
+    <span class="tag coffee">咖啡</span>
+    <div class="coffee-card">
+      <div class="coffee-header">COFFEE BREAK · 17:20 – 18:20（60 分鐘）</div>
+      <div class="coffee-name">パンとエスプレッソと嵐山庭園</div>
+
+      <div class="card-row" style="border-top:none;"><span class="label">營業時間</span><span class="value">8:00 – 18:00，全年無休</span></div>
+      <div class="card-row"><span class="label">建議休息時間</span><span class="value">60 分鐘</span></div>
+      <div class="card-row"><span class="label">價格</span><span class="value">咖啡＋輕食約 1,000 – 2,300円</span></div>
+      <div class="card-row"><span class="label">地址</span><span class="value">京都府京都市右京区嵯峨天龍寺芒ノ馬場町45-15</span></div>
+
+      <div class="card-block">
+        <div class="card-block-title">推薦理由</div>
+        <p>嵐山駅步行 3 分，不需繞路。有庭園座位可真正久坐，安靜、有空氣感的老屋氛圍，符合整體攝影與旅行調性。</p>
+      </div>
+
+      <div class="links-row">
+        <a href="https://www.google.com/maps/search/?api=1&query=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8F%B3%E4%BA%AC%E5%8C%BA%E5%B5%AF%E5%B3%A8%E5%A4%A9%E9%BE%8D%E5%AF%BA%E8%8A%92%E3%83%8E%E9%A6%AC%E5%A0%B4%E7%94%BA45-15" target="_blank" rel="noopener">Google Maps ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TRIP CHECK ============ -->
+  <div class="section">
+    <div class="section-label">行程確認　TRIP CHECK</div>
+    <ul class="check-list">
+      <li><span class="check-mark">✓</span><span>金閣寺／天龍寺今日營業時間已確認</span></li>
+      <li><span class="check-mark">✓</span><span>金閣寺／天龍寺門票金額已確認</span></li>
+      <li><span class="check-mark">✓</span><span>交通路線規劃（巴士＋嵐電組合）已確認</span></li>
+      <li><span class="check-mark">✓</span><span>全程單向動線，無不必要折返</span></li>
+      <li><span class="check-mark">✓</span><span>午餐店家（權太呂金閣寺店）不需預約</span></li>
+      <li><span class="check-mark">✓</span><span>下午咖啡已安排 60 分鐘真正休息</span></li>
+      <li><span class="check-mark pending">△</span><span>待確認：金閣寺、天龍寺今日是否有臨時公告或活動</span></li>
+      <li><span class="check-mark pending">△</span><span>待確認：所有巴士／嵐電確切發車班次（出發前請用 Google 地圖或 Yahoo!乗換案内即時查詢）</span></li>
+      <li><span class="check-mark pending">△</span><span>待確認：權太呂金閣寺店今日（週二）確切營業狀況</span></li>
+      <li><span class="check-mark pending">△</span><span>待確認：回程交通確切班次</span></li>
+    </ul>
+  </div>
+
+  <footer>KYOTO · 2026.09.15 · KINKAKU-JI &amp; ARASHIYAMA</footer>
+
+</div>
+</body>
+</html>
